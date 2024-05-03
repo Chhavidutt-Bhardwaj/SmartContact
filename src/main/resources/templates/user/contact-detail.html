@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::section}	)">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bootstrap demo</title>
+</head>
+
+<body>
+	<section>
+		<div class="text-right m-auto w-100">
+			<button onclick="javascript:window.history.back()" class="gradient-custom" style="border-radius: 80%;">
+				Back
+			</button>
+		</div>
+		<h1 class="text-center mt-5" style="border-bottom:2px solid black ;">Contact Detail</h1>
+
+		<div class="container py-5 h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100" th:if="${contact}">
+				<div class="col col-lg-10 mb-4 mb-lg-0">
+					<div class="card mb-3" style="border-radius: .5rem;">
+						<div class="row g-0">
+							<div class="col-md-4 gradient-custom text-center text-white"
+								style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+								<img th:src="@{'/image/'+${contact.image}}" border="5"
+									src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png"
+									alt="Avatar" class="img-fluid my-5" style="width: 11rem; border-radius: 50%;" />
+								<h2 th:text="${contact.name}"></h2>
+								<p th:text="${contact.work}"></p>
+								<a href="#" th:href="'tel:'+${contact.phone}" style="color:white;"><i
+										class="fa-solid fa-phone mb-5 mx-2"></i></a>
+								<a href="#" style="color:white;"><i class="fa-solid fa-message mx-2"></i></a>
+								<a href="#" th:href="'mailto:'+${contact.email}" style="color:white;"><i
+										class="fa-solid fa-envelope mx-2"></i></a>
+							</div>
+							<div class="col-md-8">
+								<div class="card-body p-4">
+									<h6>Information</h6>
+									<hr class="mt-0 mb-4">
+									<div class="row pt-1">
+										<div class="col-6 mb-3">
+											<h6>Email</h6>
+											<p th:text="${contact.email}" class="text-muted"></p>
+										</div>
+										<div class="col-6 mb-3">
+											<h6>Phone</h6>
+											<p th:text="${contact.phone}" class="text-muted"></p>
+										</div>
+										<div class="col-6 mb-3">
+											<h6>Work</h6>
+											<p th:text="${contact.work}" class="text-muted"></p>
+										</div>
+									</div>
+									<h6>Action</h6>
+									<hr class="mt-0 mb-4">
+									<div class="row pt-1">
+										<div class="d-flex justify-content-start">
+											<a href="#" th:onclick="|deleteContact(${contact.cId})|"><i class="fa-solid fa-trash mx-4"
+													style="font-size: 2rem;"></i></a>
+											<form th:action="@{'/user/update-contact/'+${contact.cId}}" method="post">
+											
+											<button type="submit" style="border: none;" class="text-primary"><i class="fa-solid fa-pen-to-square mx-4"
+													style="font-size: 2rem;"></i></button></form>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<h1 th:unless="${contact}">You don't have permission to see unauthorise contacts</h1>
+		</div>
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::section}	)">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bootstrap demo</title>
+</head>
+
+<body>
+	<section>
+		<!--<h1 class="text-center mt-5" style="border-bottom:2px solid black ;">Your Profile</h1>-->
+		<div class="card text-center m-3">
+			<div class="container text-center">
+				<img border="5" src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png"
+					class="img-fluid mt-2" style="border-radius: 50%; height:250px;" alt="...">
+			</div>
+			<div class="col-md-12">
+				<div class="card-body p-4">
+					<h2 th:text="${user.name}">Information</h2>
+					<hr class="mt-0 mb-4">
+					<div class="row pt-1">
+						<div class="col-6 mb-3">
+							<h6>User Id</h6>
+							<p th:text="${user.id}" class="text-muted"></p>
+						</div>
+						<div class="col-6 mb-3">
+							<h6>Email</h6>
+							<p th:text="${user.email}" class="text-muted"></p>
+						</div>
+						<div class="col-6 mb-3">
+							<h6>Phone</h6>
+							<p th:text="${user.Number}" class="text-muted"></p>
+						</div>
+						<div class="col-6 mb-3">
+							<h6>Work</h6>
+							<p th:text="${user.role}" class="text-muted"></p>
+						</div>
+						<div class="col-6 mb-3">
+							<h6>Enabled</h6>
+							<p th:text="${user.enabled}" class="text-muted"></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+
+</html>
